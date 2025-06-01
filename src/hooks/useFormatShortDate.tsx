@@ -9,7 +9,7 @@ export const useFormatShortDate = (providedDate: string) => {
         const formatDate = () => {
             const currentDate = new Date();
             const date = new Date(providedDate);
-            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+            const monthNames = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"];
 
             const dateDay = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
             const dateMonth = monthNames[date.getMonth()];

@@ -38,7 +38,7 @@ export const useAddTeamChatMembers = (chatId: number, userId: number, token: str
         event.preventDefault();
 
         if (selectedFriendIds.size === 0) {
-            setStatus({ type: "error", message: "Please select at least one friend to add to the team chat" });
+            setStatus({ type: "error", message: "Bitte wähle mindestens einen Freund aus, um ihn zum Team-Chat hinzuzufügen" });
             return;        
         }
 
@@ -50,12 +50,12 @@ export const useAddTeamChatMembers = (chatId: number, userId: number, token: str
         const result = await addTeamChatMembers(chatId, userId, newMemberIds, token);
 
         if (!result.success) {
-            setStatus({ type: "error", message: "Failed with adding members to the team chat" });
+            setStatus({ type: "error", message: "Fehler beim Hinzufügen von Team-Chat-Mitgliedern." });
             return;
         }
 
         setIsSubmitting(false);
-        setStatus({ type: "success", message: "Chat members added successfully" });
+        setStatus({ type: "success", message: "Chat-Mitglieder erfolgreich hinzugefügt" });
         setSelectedFriendIds(new Set());
     };
 

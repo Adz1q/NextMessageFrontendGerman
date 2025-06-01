@@ -38,7 +38,7 @@ export const useTeamChat = (chatId: number, userId: number, username: string, to
 
             if (!response.success) {
                 setIsLoadingDetails(false);
-                setError("Failed with fetching chat");
+                setError("Fehler beim Abrufen des Chats.");
                 return;
             }
 

@@ -16,7 +16,7 @@ export default function UserDropdownMenu({ session }: {
                     <DropdownMenuTrigger asChild>
                         <SidebarMenuButton className={"flex gap-2.5 h-14 text-md text-foreground"}>
                             <Avatar>
-                                <AvatarImage src={session?.user?.profilePictureUrl} alt="Profile Picture" className="w-25 h-25"/>
+                                <AvatarImage src={session?.user?.profilePictureUrl} alt="Profilbild" className="w-25 h-25"/>
                             </Avatar>
                             {session?.user?.username}
                         </SidebarMenuButton>
@@ -25,7 +25,7 @@ export default function UserDropdownMenu({ session }: {
                         <DropdownMenuItem>
                             <div onClick={() => signOut()} className="flex gap-2 items-center p-2 text-foreground">
                                 <LogOutIcon size={20}/>
-                                 Sign Out
+                                 Abmelden
                             </div>
                         </DropdownMenuItem>
                     </DropdownMenuContent>

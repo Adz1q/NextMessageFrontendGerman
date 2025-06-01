@@ -16,23 +16,23 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 
 const formSchema = z.object({
     currentPassword: z.string()
-        .min(5, { message: "Password must be between 5 and 32 characters" })
-        .max(32, { message: "Password must be between 5 and 32 characters" }),
+        .min(5, { message: "Passwort muss zwischen 5 und 32 Zeichen lang sein" })
+        .max(32, { message: "Passwort muss zwischen 5 und 32 Zeichen lang sein" }),
     newPassword: z.string()
-        .min(5, { message: "Password must be between 5 and 32 characters" })
-        .max(32, { message: "Password must be between 5 and 32 characters" }),
+        .min(5, { message: "Passwort muss zwischen 5 und 32 Zeichen lang sein" })
+        .max(32, { message: "Passwort muss zwischen 5 und 32 Zeichen lang sein" }),
     confirmNewPassword: z.string()
-        .min(5, { message: "Password must be between 5 and 32 characters" })
-        .max(32, { message: "Password must be between 5 and 32 characters" }),
+        .min(5, { message: "Passwort muss zwischen 5 und 32 Zeichen lang sein" })
+        .max(32, { message: "Passwort muss zwischen 5 und 32 Zeichen lang sein" }),
 }).refine((data) => {
     return data.currentPassword !== data.newPassword;
 }, {
-    message: "New password cannot be the same as the old one",
+    message: "Neues Passwort darf nicht mit dem alten übereinstimmen",
     path: ["newPassword"],
 }).refine((data) => {
     return data.newPassword == data.confirmNewPassword;
 }, {
-    message: "Passwords do not match",
+    message: "Passwörter stimmen nicht überein",
     path: ["confirmNewPassword"], 
 });
 
@@ -58,7 +58,7 @@ export default function SecuritySettingsCard({ userId, token }: {
         const result = await changePassword(userId, data.currentPassword, data.newPassword, token);
 
         if (!result.success) {
-            setError("Invalid password");
+            setError("Ungültiges Passwort");
             return;
         }
         
@@ -71,11 +71,11 @@ export default function SecuritySettingsCard({ userId, token }: {
             <CardHeader className="flex flex-col gap-2">
                 <CardTitle className="flex items-center gap-2">
                 <KeyRound className="h-5 w-5" />
-                Security Settings
+                Sicherheitseinstellungen
                 </CardTitle>
                 <CardDescription>
-                    Update your password to keep your account secure.
-                    This action will trigger a sign out.
+                    Aktualisiere dein Passwort, um dein Konto sicher zu halten.
+                    Diese Aktion löst eine Abmeldung aus.
                 </CardDescription>
             </CardHeader>
             <Form {...form}>
@@ -89,12 +89,12 @@ export default function SecuritySettingsCard({ userId, token }: {
                             name="currentPassword"
                             render={({ field }) => {
                                 return <FormItem>
-                                    <FormLabel className="text-md font-500 text-foreground">Enter your password</FormLabel>
+                                    <FormLabel className="text-md font-500 text-foreground">Gib dein Passwort ein</FormLabel>
                                     <FormControl>
                                         <div className="relative">
                                             <Input
                                                 type={showCurrentPassword ? "text" : "password"}
-                                                placeholder="Enter your current password"
+                                                placeholder="Gib dein aktuelles Passwort ein"
                                                 {...field}
                                             />
                                             <button 
@@ -115,12 +115,12 @@ export default function SecuritySettingsCard({ userId, token }: {
                             name="newPassword"
                             render={({ field }) => {
                                 return <FormItem>
-                                    <FormLabel className="text-md font-500 text-foreground">Enter your password</FormLabel>
+                                    <FormLabel className="text-md font-500 text-foreground">Gib dein Passwort ein</FormLabel>
                                     <FormControl>
                                         <div className="relative">
                                             <Input
                                                 type={showNewPassword ? "text" : "password"}
-                                                placeholder="Enter your new password"
+                                                placeholder="Gib dein neues Passwort ein"
                                                 {...field}
                                             />
                                             <button 
@@ -141,12 +141,12 @@ export default function SecuritySettingsCard({ userId, token }: {
                             name="confirmNewPassword"
                             render={({ field }) => {
                                 return <FormItem>
-                                    <FormLabel className="text-md font-500 text-foreground">Enter your password</FormLabel>
+                                    <FormLabel className="text-md font-500 text-foreground">Gib dein Passwort ein</FormLabel>
                                     <FormControl>
                                         <div className="relative">
                                             <Input
                                                 type={showConfirmNewPassword ? "text" : "password"}
-                                                placeholder="Confirm your new password"
+                                                placeholder="Bestätige dein neues Passwort"
                                                 {...field}
                                             />
                                             <button 
@@ -172,7 +172,7 @@ export default function SecuritySettingsCard({ userId, token }: {
                         >
                             <span className="flex items-center gap-2">
                                 <Save className="h-4 w-4" />
-                                Update Password
+                                Passwort aktualisieren
                             </span>
                         </Button>
                     </CardFooter>

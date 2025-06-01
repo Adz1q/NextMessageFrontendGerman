@@ -15,12 +15,12 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 
 const formSchema = z.object({
     name: z.string()
-        .min(1, { message: "Chat name must be between 1 and 16 characters" })
-        .max(16, { message: "Chat name must be between 1 and 16 characters" }),
+        .min(1, { message: "Chat-Name muss zwischen 1 und 16 Zeichen lang sein" })
+        .max(16, { message: "Chat-Name muss zwischen 1 und 16 Zeichen lang sein" }),
 }).refine((data) => {
     return /^[a-zA-Z]/.test(data.name);
 }, {
-    message: "Chat name must start with a letter",
+    message: "Chat-Name muss mit einem Buchstaben beginnen",
     path: ["name"],
 });
 
@@ -42,7 +42,7 @@ export default function ChangeTeamChatName({ userId, chatId, token }: {
         const result = await changeTeamChatName(chatId, userId, data.name, token);
 
         if (!result.success) {
-            setError("An error appeared");
+            setError("Fehler beim Ändern des Team-Chat-Namens.");
             return;
         }
 
@@ -55,10 +55,10 @@ export default function ChangeTeamChatName({ userId, chatId, token }: {
             <CardHeader className="flex flex-col gap-2">
                 <CardTitle className="flex items-center gap-2">
                 <Edit className="h-5 w-5" />
-                    Chat Name
+                    Chat-Name
                 </CardTitle>
                 <CardDescription>
-                    Update the chat name. Changes will be visible to other users.
+                    Aktualisiere den Chat-Namen. Änderungen sind für andere Benutzer sichtbar.
                 </CardDescription>
             </CardHeader>    
             <Form {...form}>
@@ -69,11 +69,11 @@ export default function ChangeTeamChatName({ userId, chatId, token }: {
                             name="name"
                             render={({ field }) => {
                                 return <FormItem>
-                                        <FormLabel className="text-md font-500 text-foreground">Enter a new chat name</FormLabel>
+                                        <FormLabel className="text-md font-500 text-foreground">Gib einen neuen Chat-Namen ein</FormLabel>
                                         <FormControl>
                                             <Input
                                                 type="text"
-                                                placeholder="Chat name"
+                                                placeholder="Chat-Name"
                                                 {...field}
                                             />
                                         </FormControl>
@@ -87,7 +87,7 @@ export default function ChangeTeamChatName({ userId, chatId, token }: {
                         <Button type="submit" disabled={!form.watch('name')?.trim()} className="ml-auto">
                             <span className="flex items-center gap-2">
                                 <Save className="h-4 w-4" />
-                                Save Changes
+                                Änderungen speichern
                             </span>
                         </Button>
                     </CardFooter>

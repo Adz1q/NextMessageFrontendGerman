@@ -59,16 +59,16 @@ export default function ChatMember({
                 </div>
                 <div className="flex items-center gap-2">
                     <Button onClick={handleChangeTeamChatAdmin} variant="outline" size="sm" className={userId === adminId  && member?.userId !== adminId ? "visible" : "invisible"}>
-                        <Crown /> Make Admin
+                        <Crown /> Zum Admin machen
                     </Button>
                     <Button onClick={handleRemoveTeamChatMember} variant="outline" size="sm" className={userId === adminId && member?.userId !== adminId ? "visible" : "invisible"}>
-                        <UserMinus /> Remove
+                        <UserMinus /> Entfernen
                     </Button>
                     <Button onClick={handleStartNewConversation} size="sm" variant="outline" className={(member?.allowMessagesFromNonFriends || member?.friend) && member?.userId !== userId ? "visible" : "invisible"}>
-                        <MessageCircleMore /> Message
+                        <MessageCircleMore /> Nachricht
                     </Button>
                     <Button onClick={handleSendFriendshipRequest} size="sm" variant="outline" className={member?.friend || isFriendshipRequestSent || member?.userId === userId ? "invisible" : "visible"}>
-                        <UserPlus /> Add Friend
+                        <UserPlus /> Freund hinzufügen
                     </Button>
                 </div>
             </div>

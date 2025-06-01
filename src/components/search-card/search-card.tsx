@@ -44,7 +44,7 @@ type FriendshipRequest = {
 };
 
 const formSchema = z.object({
-    username: z.string().min(1, { message: "Type at least one letter" }),
+    username: z.string().min(1, { message: "Gib mindestens einen Buchstaben ein" }),
 });
 
 const EmptyStateBlock = ({
@@ -86,7 +86,7 @@ export default function SearchCard({ session }: { session: Session }) {
             const friendshipRequestsResult = await getFriendshipRequestsBySenderId(parseInt(session?.user?.id), session?.user?.token);
 
             if (!friendsResult.success || !chatsResult.success || !friendshipRequestsResult.success) {
-                setError("Failed with fetching friends, chats or friendship requests");
+                setError("Fehler beim Abrufen von Freunden, Chats oder Freundschaftsanfragen");
                 return;
             }
     
@@ -115,10 +115,10 @@ export default function SearchCard({ session }: { session: Session }) {
             <div className="flex flex-col items-center text-center mb-8">
                 <div className="flex items-center justify-center text-3xl sm:text-4xl gap-3 font-semibold text-foreground mb-2">
                     <Users className="h-8 w-8 text-primary" />
-                    <div>Find New Friends</div>
+                    <div>Finde neue Freunde</div>
                 </div>
                 <div className="text-muted-foreground text-sm sm:text-base">
-                    Search for users by their username to add them and message.
+                    Suche nach Benutzern anhand ihres Benutzernamens, um sie hinzuzufügen und ihnen Nachrichten zu senden.
                 </div>
             </div>
             <div className="items-center flex flex-col border-b pb-6">
@@ -135,7 +135,7 @@ export default function SearchCard({ session }: { session: Session }) {
                                     <FormControl>
                                         <Input 
                                             type="text"
-                                            placeholder="Username"
+                                            placeholder="Benutzername"
                                             {...field}
                                         />
                                     </FormControl>
@@ -145,7 +145,7 @@ export default function SearchCard({ session }: { session: Session }) {
                         />
                         <Button> 
                             <Search/>
-                            Search
+                            Suchen
                         </Button>
                     </form>
                 </Form>          
@@ -156,27 +156,27 @@ export default function SearchCard({ session }: { session: Session }) {
                     <div className="m-12 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 flex-grow content-start md:content-center p-2 md:p-0">
                         <EmptyStateBlock
                             icon={UserSearch}
-                            title="Discover New People"
-                            text="Use the search bar above to find users by their username. Start building your network!"
+                            title="Entdecke neue Leute"
+                            text="Verwende die Suchleiste oben, um Benutzer anhand ihres Benutzernamens zu finden. Beginne mit dem Aufbau deines Netzwerks!"
                         />
                         <EmptyStateBlock
                             icon={Network}
-                            title="Expand Your Circle"
-                            text="Connect with new friends, colleagues, or people sharing your interests through NextMessage."
+                            title="Erweitere deinen Kreis"
+                            text="Verbinde dich mit neuen Freunden, Kollegen oder Personen, die deine Interessen über NextMessage teilen."
                         />
                         <EmptyStateBlock
                             icon={MessagesSquare}
-                            title="Start a Conversation"
-                            text="Once you find someone, send a friend request and begin chatting instantly and securely."
+                            title="Starte eine Unterhaltung"
+                            text="Sobald du jemanden gefunden hast, sende eine Freundschaftsanfrage und beginne sofort und sicher zu chatten."
                         />
                         <EmptyStateBlock
                             icon={Sparkles}
-                            title="Explore Features"
-                            text="Check out group chats, message reactions, and other tools to enhance your communication."
+                            title="Entdecke Funktionen"
+                            text="Sieh dir Gruppenchats, Nachrichtenreaktionen und andere Tools an, um deine Kommunikation zu verbessern."
                         />
                     </div>
                 )}
-                {foundUsers && <div className="flex items-center justify-center gap-3 text-3xl w-full font-500">Search Result <Search /></div>}
+                {foundUsers && <div className="flex items-center justify-center gap-3 text-3xl w-full font-500">Suchergebnis <Search /></div>}
                 {foundUsers?.map((foundUser) => <FoundUserCard key={foundUser.id} foundUser={foundUser} chats={chats} friends={friends} friendshipRequests={friendshipRequests} session={session}/>)}
             </div>
         </div>

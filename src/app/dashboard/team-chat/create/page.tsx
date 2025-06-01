@@ -5,7 +5,7 @@ import { Session } from "next-auth";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-    title: "Create Team Chat | NextMessage",
+    title: "Team-Chat erstellen | NextMessage",
 };
 
 export default async function CreateTeamChatPage() {

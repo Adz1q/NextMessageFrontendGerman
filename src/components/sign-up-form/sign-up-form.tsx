@@ -15,26 +15,26 @@ import { signIn } from "next-auth/react";
 
 const formSchema = z.object({
     username: z.string()
-        .min(4, { message: "Username must be between 4 and 12 characters" })
-        .max(12, { message: "Username must be between 4 and 12 characters" }),
+        .min(4, { message: "Benutzername muss zwischen 4 und 12 Zeichen lang sein" })
+        .max(12, { message: "Benutzername muss zwischen 4 und 12 Zeichen lang sein" }),
     email: z.string()
-        .min(4, { message: "Email must be between 4 and 50 characters" })
-        .max(50, { message: "Email must be between 4 and 50 characters" }),
+        .min(4, { message: "E-Mail muss zwischen 4 und 50 Zeichen lang sein" })
+        .max(50, { message: "E-Mail muss zwischen 4 und 50 Zeichen lang sein" }),
     password: z.string()
-        .min(5, { message: "Password must be between 5 and 32 characters" })
-        .max(32, { message: "Password must be between 5 and 32 characters" }),
+        .min(5, { message: "Passwort muss zwischen 5 und 32 Zeichen lang sein" })
+        .max(32, { message: "Passwort muss zwischen 5 und 32 Zeichen lang sein" }),
     confirmPassword: z.string()
-        .min(5, { message: "Password must be between 5 and 32 characters" })
-        .max(32, { message: "Password must be between 5 and 32 characters" }),
+        .min(5, { message: "Passwort muss zwischen 5 und 32 Zeichen lang sein" })
+        .max(32, { message: "Passwort muss zwischen 5 und 32 Zeichen lang sein" }),
 }).refine((data) => {
     return /^[a-zA-Z]/.test(data.username);
 }, {
-    message: "Username must start with a letter",
+    message: "Benutzername muss mit einem Buchstaben beginnen",
     path: ["username"],
 }).refine((data) => {
     return data.password === data.confirmPassword;
 }, {
-    message: "Passwords do not match",
+    message: "Passwörter stimmen nicht überein",
     path: ["confirmPassword"], 
 });
 
@@ -61,7 +61,7 @@ export default function SignUpForm() {
         const registerResponse = await signUp(data.username, data.email, data.password);
 
         if (!registerResponse.success) {
-            setError(registerResponse.error);
+            setError("Bei der Registrierung ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.");
             return;
         }
 
@@ -73,7 +73,7 @@ export default function SignUpForm() {
             });
 
             if (!loginResponse || !loginResponse.ok) {
-                throw new Error("Something went wrong with auto-login, please sign in manually");
+                throw new Error("Etwas ist mit der automatischen Anmeldung schiefgelaufen, bitte melde dich manuell an");
             }
 
             setError("");
@@ -83,7 +83,7 @@ export default function SignUpForm() {
             const responseError = error as Error;
 
             console.log(responseError);
-            setSuccess("Account created, please sign in to continue");
+            setSuccess("Konto erstellt, bitte melde dich an, um fortzufahren");
             router.push("/sign-in");
         }
     };
@@ -92,10 +92,10 @@ export default function SignUpForm() {
         <div className="flex gap-12 items-center flex-col min-h-screen p-24">
             <div className="flex flex-col justify-center items-center gap-4">
                 <div className={"text-4xl font-bold flex items-center justify-center"}>
-                    Welcome
+                    Willkommen
                 </div>
                 <div className={"text-lg flex items-center justify-center text-muted-foreground"}>
-                    Enter your credentials to register your account
+                    Gib deine Anmeldedaten ein, um dein Konto zu registrieren
                 </div>
             </div>
             <div className="max-w-md w-full flex flex-col gap-8">
@@ -109,11 +109,11 @@ export default function SignUpForm() {
                             name="username"
                             render={({ field }) => {
                                 return <FormItem>
-                                    <FormLabel className="text-md font-500 text-foreground">Enter your username</FormLabel>
+                                    <FormLabel className="text-md font-500 text-foreground">Gib deinen Benutzernamen ein</FormLabel>
                                     <FormControl>
                                         <Input
                                             type="text"
-                                            placeholder="Username"
+                                            placeholder="Benutzername"
                                             {...field}
                                         />
                                     </FormControl>
@@ -126,11 +126,11 @@ export default function SignUpForm() {
                             name="email"
                             render={({ field }) => {
                                 return <FormItem>
-                                    <FormLabel className="text-md font-500 text-foreground">Enter your email</FormLabel>
+                                    <FormLabel className="text-md font-500 text-foreground">Gib deine E-Mail-Adresse ein</FormLabel>
                                     <FormControl>
                                         <Input
                                             type="email"
-                                            placeholder="Email"
+                                            placeholder="E-Mail"
                                             {...field}
                                         />
                                     </FormControl>
@@ -143,12 +143,12 @@ export default function SignUpForm() {
                             name="password"
                             render={({ field }) => {
                                 return <FormItem>
-                                    <FormLabel className="text-md font-500 text-foreground">Enter your password</FormLabel>
+                                    <FormLabel className="text-md font-500 text-foreground">Gib dein Passwort ein</FormLabel>
                                     <FormControl>
                                         <div className="relative">
                                             <Input
                                                 type={showPassword ? "text" : "password"}
-                                                placeholder="Password"
+                                                placeholder="Passwort"
                                                 {...field}
                                             />
                                             <button 
@@ -169,12 +169,12 @@ export default function SignUpForm() {
                             name="confirmPassword"
                             render={({ field }) => {
                                 return <FormItem>
-                                    <FormLabel className="text-md font-500 text-foreground">Confirm your password</FormLabel>
+                                    <FormLabel className="text-md font-500 text-foreground">Bestätige dein Passwort</FormLabel>
                                     <FormControl>
                                         <div className="relative">
                                             <Input
                                                 type={showConfirmPassword ? "text" : "password"}
-                                                placeholder="Confirm password"
+                                                placeholder="Passwort bestätigen"
                                                 {...field}
                                             />
                                             <button 
@@ -190,7 +190,7 @@ export default function SignUpForm() {
                                 </FormItem>
                             }}
                         />
-                        <Button type="submit" className="w-full">Sign Up</Button>
+                        <Button type="submit" className="w-full">Registrieren</Button>
                         {error && <div className="flex justify-center items-center">
                             <div className="text-red-900 font-medium">{error}</div>
                         </div>}
@@ -200,7 +200,7 @@ export default function SignUpForm() {
                     </form>
                 </Form>
                 <div className={"flex justify-center items-center max-w-md w-full"}>
-                    <Link href="/sign-in" className="hover:underline">Already have an account? Sign In</Link>
+                    <Link href="/sign-in" className="hover:underline">Hast du bereits ein Konto? Anmelden</Link>
                 </div>
             </div>
         </div>

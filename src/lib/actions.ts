@@ -60,7 +60,7 @@ export const signUp = async (username: string, email: string, password: string):
         
         return {
             success: false,
-            error: String(responseError.response?.data) || responseError.message,
+            error: "Bei der Registrierung ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.",
         }
     }
 };

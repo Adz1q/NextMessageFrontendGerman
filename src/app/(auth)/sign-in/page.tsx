@@ -5,7 +5,7 @@ import { Session } from "next-auth";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-    title: "Sign In | NextMessage",
+    title: "Anmelden | NextMessage",
 };
 
 export default async function SignInPage() {

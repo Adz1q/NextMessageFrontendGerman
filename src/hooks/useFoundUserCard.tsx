@@ -82,7 +82,7 @@ export const useFoundUserCard = (
         );
 
         if (!secondResult.success) {
-            setError(secondResult.error);
+            setError("Fehler beim Erstellen des privaten Chats.");
             return;
         }
 
@@ -116,7 +116,7 @@ export const useFoundUserCard = (
         );
 
         if (!result.success) {
-            setError(result.error);
+            setError("Fehler beim Senden der Freundschaftsanfrage.");
             return;
         }
 

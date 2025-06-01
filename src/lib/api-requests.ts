@@ -96,7 +96,7 @@ export const getUser = async (login: string, token: string): Promise<ApiResponse
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Abrufen der Benutzerdaten.",
         };
     } 
 };
@@ -117,7 +117,7 @@ export const getChats = async (userId: string, token: string): Promise<ApiRespon
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Abrufen der Chatliste.",
         };
     }
 };
@@ -138,7 +138,7 @@ export const getPrivateChatMember = async (chatId: number, userId: number, token
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Abrufen des Chat-Mitglieds.",
         };
     }
 };
@@ -159,7 +159,7 @@ export const getMessages = async (chatId: number, userId: number, offset: number
         
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Abrufen der Nachrichten.",
         };
     }
 };
@@ -180,7 +180,7 @@ export const getUsersBySimilarUsername = async (username: string, token: string)
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler bei der Benutzersuche.",
         };
     }
 };
@@ -201,7 +201,7 @@ export const getFriends = async (userId: number, token: string): Promise<ApiResp
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Abrufen der Freundesliste.",
         };
     }
 };
@@ -222,7 +222,7 @@ export const getFriendshipRequestsBySenderId = async (senderId: number, token: s
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Abrufen der Freundschaftsanfragen.",
         };
     }
 };
@@ -252,7 +252,7 @@ export const sendFriendshipRequest = async (senderId: number, receiverId: number
     
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Senden der Freundschaftsanfrage.",
         };
     }
 };
@@ -273,7 +273,7 @@ export const getPrivateChatByMembers = async (firstUserId: number, secondUserId:
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Abrufen des privaten Chats.",
         };
     }
 };
@@ -299,7 +299,7 @@ export const createPrivateChat = async (senderId: number, receiverId: number, to
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Erstellen des privaten Chats.",
         };
     }
 };
@@ -324,7 +324,7 @@ export const removeFriend = async (friendshipId: number, token: string): Promise
         
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Entfernen des Freundes.",
         };
     }
 };
@@ -354,7 +354,7 @@ export const acceptFriendshipRequest = async (senderId: number, receiverId: numb
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Akzeptieren der Freundschaftsanfrage.",
         };
     }
 };
@@ -379,7 +379,7 @@ export const rejectFriendshipRequest = async (senderId: number, receiverId: numb
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Ablehnen der Freundschaftsanfrage.",
         };
     }
 };
@@ -409,7 +409,7 @@ export const changeUsername = async (userId: number, newUsername: string, token:
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Ändern des Benutzernamens.",
         };
     }
 };
@@ -440,7 +440,7 @@ export const changePassword = async (userId: number, oldPassword: string, newPas
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Ändern des Passworts.",
         };
     }
 };
@@ -470,7 +470,7 @@ export const changeMessagePreferences = async (userId: number, allowMessagesFrom
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Ändern der Nachrichteneinstellungen.",
         };
     }
 };
@@ -495,7 +495,7 @@ export const deleteAccount = async (userId: number, password: string, token: str
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Löschen des Kontos.",
         };
     }
 };
@@ -526,7 +526,7 @@ export const createTeamChat = async (name: string, adminId: number, memberIds: n
 
         return {
             success: false,
-            error: responseError.message
+            error: "Fehler beim Erstellen des Team-Chats."
         };
     }
 };
@@ -547,7 +547,7 @@ export const getChat = async (chatId: number, userId: number, token: string): Pr
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Abrufen des Chats.",
         };
     }
 };
@@ -578,7 +578,7 @@ export const changeTeamChatName = async (chatId: number, userId: number, name: s
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Ändern des Team-Chat-Namens.",
         };
     }
 };
@@ -599,7 +599,7 @@ export const deleteTeamChat = async (chatId: number, userId: number, token: stri
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Löschen des Team-Chats.",
         };
     }
 };
@@ -620,7 +620,7 @@ export const removeTeamChatMember = async (chatId: number, memberId: number, adm
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Entfernen des Team-Chat-Mitglieds.",
         };
     }
 };
@@ -651,7 +651,7 @@ export const changeTeamChatAdmin = async (chatId: number, userId: number, newAdm
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Ändern des Team-Chat-Admins.",
         };
     }
 };
@@ -682,7 +682,7 @@ export const addTeamChatMembers = async (chatId: number, userId: number, newMemb
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Hinzufügen von Team-Chat-Mitgliedern.",
         };
     }
 };
@@ -703,7 +703,7 @@ export const leaveTeamChat = async (chatId: number, userId: number, token: strin
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler beim Verlassen des Team-Chats.",
         };
     }
 };
@@ -724,7 +724,7 @@ export const isMemberOfChat = async (chatId: number, userId: number, token: stri
 
         return {
             success: false,
-            error: responseError.message,
+            error: "Fehler bei der Überprüfung der Chat-Mitgliedschaft.",
         };
     }
 };

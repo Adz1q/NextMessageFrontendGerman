@@ -48,13 +48,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     providers: [
         Credentials({
             credentials: {
-                login: { label: "Login", type: "text" },
-                password: { label: "Password", type: "password" },
+                login: { label: "Anmeldung", type: "text" },
+                password: { label: "Passwort", type: "password" },
             },
             authorize: async (credentials) => {
                 try {
                     if (credentials === undefined) {
-                        throw new Error("You must provide credentials");
+                        throw new Error("Sie müssen Anmeldedaten angeben");
                     }
 
                     const login: string = credentials.login as string;
@@ -77,13 +77,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                     const { token } = loginResponse.data;
 
                     if (!token) {
-                        throw new Error("Token not found in response");
+                        throw new Error("Token in der Antwort nicht gefunden");
                     }
 
                     const userResponse = await getUser(login, token);
 
                     if (!userResponse.success) {
-                        throw new Error(userResponse.error);
+                        throw new Error("Fehler beim Abrufen der Benutzerdaten nach der Anmeldung.");
                     }
 
                     return {

@@ -31,7 +31,7 @@ export default function LeaveTeamChat({ chatId, userId, token }: {
         const result = await leaveTeamChat(chatId, userId, token);
 
         if (!result.success) {
-            setError("Failed with leaving chat");
+            setError("Fehler beim Verlassen des Team-Chats.");
             return;
         }
 
@@ -44,10 +44,10 @@ export default function LeaveTeamChat({ chatId, userId, token }: {
             <CardHeader className="flex flex-col gap-2">
                 <CardTitle className="flex items-center gap-2 text-destructive">
                     <DoorOpen className="h-5 w-5" />
-                        Leave Chat
+                        Chat verlassen
                     </CardTitle>
                 <CardDescription>
-                    Leaving a chat is an action that cannot be undone.
+                    Das Verlassen eines Chats ist eine Aktion, die nicht rückgängig gemacht werden kann.
                 </CardDescription>
             </CardHeader>
             <CardFooter>
@@ -58,24 +58,24 @@ export default function LeaveTeamChat({ chatId, userId, token }: {
                             <Button variant="destructive" className="ml-auto">
                                 <span className="flex items-center gap-2">
                                 <DoorOpen className="h-4 w-4" />
-                                Leave Chat
+                                Chat verlassen
                                 </span>
                             </Button>
                         </AlertDialogTrigger>
                 <AlertDialogContent>
                     <AlertDialogHeader>
-                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                    <AlertDialogTitle>Bist du absolut sicher?</AlertDialogTitle>
                     <AlertDialogDescription>
-                        This action cannot be undone. The chat will be deleted from your chat list.
+                        Diese Aktion kann nicht rückgängig gemacht werden. Der Chat wird aus deiner Chat-Liste gelöscht.
                     </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel>Abbrechen</AlertDialogCancel>
                     <AlertDialogAction
                         onClick={handleLeaveChat}
                         className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
                     >
-                        Yes, leave the chat
+                        Ja, den Chat verlassen
                     </AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>

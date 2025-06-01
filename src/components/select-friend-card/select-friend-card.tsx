@@ -78,7 +78,7 @@ export default function SelectFriendCard({
                 ) : (
                     <UserPlus className="h-3.5 w-3.5 mr-1.5" />
                 )}
-                {selectedFriendIds.has(friend.id) ? "Remove" : "Add"}
+                {selectedFriendIds.has(friend.id) ? "Entfernen" : "Hinzufügen"}
             </Button>
         </div>
     );

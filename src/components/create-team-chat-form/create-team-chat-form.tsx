@@ -17,12 +17,12 @@ import SelectFriendCard from "../select-friend-card/select-friend-card";
 
 const formSchema = z.object({
     chatName: z.string()
-        .min(1, { message: "Chat name must be between 1 and 16 characters" })
-        .max(16, { message: "Chat name must be between 1 and 16 characters" }),
+        .min(1, { message: "Chat-Name muss zwischen 1 und 16 Zeichen lang sein" })
+        .max(16, { message: "Chat-Name muss zwischen 1 und 16 Zeichen lang sein" }),
 }).refine((data) => {
     return /^[a-zA-Z]/.test(data.chatName);
 }, {
-    message: "Chat name must start with a letter",
+    message: "Chat-Name muss mit einem Buchstaben beginnen",
     path: ["chatName"],
 });
 
@@ -45,7 +45,7 @@ export default function CreateTeamChatForm({ userId, token }: {
 
     const onSubmit = async (data: z.infer<typeof formSchema>) => {
         if (selectedFriendIds.size === 0) {
-            setStatus({ type: "error", message: "Please select at least one friend to create a team chat" });
+            setStatus({ type: "error", message: "Bitte wähle mindestens einen Freund aus, um einen Team-Chat zu erstellen" });
             return;        
         }
 
@@ -57,12 +57,12 @@ export default function CreateTeamChatForm({ userId, token }: {
         const result = await createTeamChat(data.chatName, userId, memberIds, token);
 
         if (!result.success) {
-            setStatus({ type: "error", message: "Failed with creating team chat" });
+            setStatus({ type: "error", message: "Fehler beim Erstellen des Team-Chats." });
             return;
         }
 
         setIsSubmitting(false);
-        setStatus({ type: "success", message: "Team chat created successfully" });
+        setStatus({ type: "success", message: "Team-Chat erfolgreich erstellt" });
         form.reset();
         setSelectedFriendIds(new Set());
     };
@@ -73,9 +73,9 @@ export default function CreateTeamChatForm({ userId, token }: {
                 <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit mb-3">
                      <MessageSquarePlus className="h-8 w-8 text-primary" />
                 </div>
-                <CardTitle className="text-2xl font-bold tracking-tight">Create New Team Chat</CardTitle>
+                <CardTitle className="text-2xl font-bold tracking-tight">Neuen Team-Chat erstellen</CardTitle>
                 <CardDescription>
-                    Choose a unique name and invite your friends to start collaborating.
+                    Wähle einen einzigartigen Namen und lade deine Freunde ein, um mit der Zusammenarbeit zu beginnen.
                 </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -89,10 +89,10 @@ export default function CreateTeamChatForm({ userId, token }: {
                             name="chatName"
                             render={({ field }) => {
                                 return <FormItem>
-                                    <FormLabel>Chat Name</FormLabel>
+                                    <FormLabel>Chat-Name</FormLabel>
                                     <FormControl>
                                         <Input
-                                            placeholder="e.g., Project Team"
+                                            placeholder="z.B. Projektteam"
                                             className="h-11 text-base focus-visible:ring-primary/80"
                                             {...field}
                                         />
@@ -102,10 +102,10 @@ export default function CreateTeamChatForm({ userId, token }: {
                             }}
                         />
                         <div className="space-y-3">
-                            <FormLabel className="text-sm font-medium">Select Members</FormLabel>
+                            <FormLabel className="text-sm font-medium">Mitglieder auswählen</FormLabel>
                             {friends.length === 0 && (
                                 <p className="text-sm text-muted-foreground py-3 text-center">
-                                    You currently have no friends to add.
+                                    Du hast derzeit keine Freunde zum Hinzufügen.
                                 </p>
                             )}
                             {friends.length > 0 && (
@@ -124,7 +124,7 @@ export default function CreateTeamChatForm({ userId, token }: {
                             )}
                             {selectedFriendIds.size > 0 && (
                                 <div className="text-xs text-muted-foreground pt-1">
-                                    Selected members: {selectedFriendIds.size}
+                                    Ausgewählte Mitglieder: {selectedFriendIds.size}
                                 </div>
                             )}
                         </div>
@@ -143,7 +143,7 @@ export default function CreateTeamChatForm({ userId, token }: {
                             ) : (
                                 <Users className="mr-2 h-5 w-5" />
                             )}
-                            Create Chat
+                            Chat erstellen
                         </Button>
                     </form>
                 </Form>

@@ -28,10 +28,10 @@ export default function ChatMembers({
 
     return (
         <div className="flex flex-col">
-            <div className="w-full rounded-md p-3  pt-5 text-2xl flex items-center justify-center gap-2"><Users /> Chat Members</div>
+            <div className="w-full rounded-md p-3  pt-5 text-2xl flex items-center justify-center gap-2"><Users /> Chat-Mitglieder</div>
             {members.length <= 0 && 
                 <p className="text-sm text-muted-foreground py-3 text-center">
-                    Your chat has currently no members.
+                    Dein Chat hat derzeit keine Mitglieder.
                 </p>
             }
             {members.length > 0 && (

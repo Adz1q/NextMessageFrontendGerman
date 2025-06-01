@@ -6,7 +6,7 @@ import { Session } from "next-auth";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-    title: "Team Chat Setting | NextMessage",
+    title: "Team-Chat Einstellungen | NextMessage",
 };
 
 export default async function TeamChatSettings({ params }: {
@@ -28,7 +28,7 @@ export default async function TeamChatSettings({ params }: {
     );
 
     if (!isMember.success) {
-        throw new Error("Cannot resolve if the user is a member of this chat");
+        throw new Error("Es konnte nicht festgestellt werden, ob der Benutzer Mitglied dieses Chats ist");
     }
 
     if (!isMember.data) {

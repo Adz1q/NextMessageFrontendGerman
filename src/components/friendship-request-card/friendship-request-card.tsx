@@ -50,10 +50,10 @@ export default function FriendshipRequestCard({ friendshipRequest, token }: {
             </div>
             <div className="flex justify-center items-center gap-2">
                 <Button onClick={handleAcceptFriendshipRequest} className="w-full max-w-1/2" variant="secondary">
-                    <Check /> Accept
+                    <Check /> Annehmen
                 </Button>
                 <Button onClick={handleRejectFriendshipRequest} className="w-full max-w-1/2" variant="secondary">
-                    <X /> Reject
+                    <X /> Ablehnen
                 </Button>
             </div>
         </div>

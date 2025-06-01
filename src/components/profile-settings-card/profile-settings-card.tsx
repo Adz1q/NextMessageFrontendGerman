@@ -16,12 +16,12 @@ import { signOut } from "next-auth/react";
 
 const formSchema = z.object({
     username: z.string()
-        .min(4, { message: "Username must be between 4 and 12 characters" })
-        .max(12, { message: "Username must be between 4 and 12 characters" }),
+        .min(4, { message: "Benutzername muss zwischen 4 und 12 Zeichen lang sein" })
+        .max(12, { message: "Benutzername muss zwischen 4 und 12 Zeichen lang sein" }),
 }).refine((data) => {
     return /^[a-zA-Z]/.test(data.username);
 }, {
-    message: "Username must start with a letter",
+    message: "Benutzername muss mit einem Buchstaben beginnen",
     path: ["username"],
 });
 
@@ -42,7 +42,7 @@ export default function ProfileSettingsCard({ userId, token }: {
         const result = await changeUsername(userId, data.username, token);
 
         if (!result.success) {
-            setError("Username is already taken");
+            setError("Benutzername ist bereits vergeben");
             return;
         }
 
@@ -55,11 +55,11 @@ export default function ProfileSettingsCard({ userId, token }: {
             <CardHeader className="flex flex-col gap-2">
                 <CardTitle className="flex items-center gap-2">
                 <UserCircle className="h-5 w-5" />
-                Profile Information
+                Profilinformationen
                 </CardTitle>
                 <CardDescription>
-                    Update your profile information. Changes will be visible to other users. <br />
-                    This action will trigger a sign out.
+                    Aktualisiere deine Profilinformationen. Änderungen sind für andere Benutzer sichtbar. <br />
+                    Diese Aktion löst eine Abmeldung aus.
                 </CardDescription>
             </CardHeader>    
             <Form {...form}>
@@ -70,11 +70,11 @@ export default function ProfileSettingsCard({ userId, token }: {
                             name="username"
                             render={({ field }) => {
                                 return <FormItem>
-                                        <FormLabel className="text-md font-500 text-foreground">Enter your username</FormLabel>
+                                        <FormLabel className="text-md font-500 text-foreground">Gib deinen Benutzernamen ein</FormLabel>
                                         <FormControl>
                                             <Input
                                                 type="text"
-                                                placeholder="Username"
+                                                placeholder="Benutzername"
                                                 {...field}
                                             />
                                         </FormControl>
@@ -88,7 +88,7 @@ export default function ProfileSettingsCard({ userId, token }: {
                         <Button type="submit" disabled={!form.watch('username')?.trim()} className="ml-auto">
                             <span className="flex items-center gap-2">
                                 <Save className="h-4 w-4" />
-                                Save Changes
+                                Änderungen speichern
                             </span>
                         </Button>
                     </CardFooter>

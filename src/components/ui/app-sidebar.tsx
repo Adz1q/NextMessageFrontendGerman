@@ -12,6 +12,7 @@ import { useChangeSidebarList } from "@/hooks/useChangeSidebarList";
 import ChatList from "../chat-list/chat-list";
 import FriendList from "../friend-list/friend-list";
 import FriendshipRequestList from "../friendship-request-list/friendship-request-list";
+import { redirect } from "next/navigation";
 
 export function AppSidebar({ session }: { 
     session: Session | null
@@ -27,7 +28,7 @@ export function AppSidebar({ session }: {
     } = useChangeSidebarList();
 
     if (!session?.user) {
-        throw new Error("Invalid session!");
+        redirect("/");
     } 
 
     return (
@@ -41,35 +42,35 @@ export function AppSidebar({ session }: {
                 <Link href="/dashboard" className="w-full">
                     <Button variant="ghost" className="flex justify-start text-md w-full">
                         <Search />
-                        Search    
+                        Suchen    
                     </Button>
                 </Link>
                 <Link href="/dashboard/settings" className="w-full">
                     <Button variant="ghost" className="flex justify-start text-md w-full">
                         <Settings />
-                        Settings
+                        Einstellungen
                     </Button>
                 </Link>
                 <Link href="/dashboard/team-chat/create" className="w-full">
                     <Button variant="ghost" className="flex justify-start text-md w-full">
                         <MessageCirclePlus />
-                        Create Team Chat
+                        Team-Chat erstellen
                     </Button>
                 </Link>
                 <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="ghost" className="flex justify-start text-md w-full">
-                                <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" /> Theme
+                                <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" /> Design
                                 <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                                <span className="sr-only">Toggle theme</span>
+                                <span className="sr-only">Design umschalten</span>
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
                             <DropdownMenuItem onClick={() => setTheme("light")}>
-                            Light
+                            Hell
                             </DropdownMenuItem>
                             <DropdownMenuItem onClick={() => setTheme("dark")}>
-                            Dark
+                            Dunkel
                             </DropdownMenuItem>
                             <DropdownMenuItem onClick={() => setTheme("system")}>
                             System

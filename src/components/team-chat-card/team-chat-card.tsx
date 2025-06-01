@@ -45,7 +45,7 @@ export default function TeamChatCard({
           <div className="flex items-center justify-between p-4 border-b">
                 <div className="flex items-center justify-center gap-4">
                     <Avatar>
-                        <AvatarImage src={chat?.profilePictureUrl} className="w-25 h-25" alt="User"/>
+                        <AvatarImage src={chat?.profilePictureUrl} className="w-25 h-25" alt="Benutzer"/>
                     </Avatar>
                     <div className="font-medium">
                         {chat?.name}
@@ -78,13 +78,13 @@ export default function TeamChatCard({
                     loader={
                         // <div className="flex flex-col items-center justify-center flex-grow text-muted-foreground min-h-[200px]">
                         //     <Loader2 className="h-10 w-10 animate-spin text-primary mb-4" />
-                        //     <p>Loading messages...</p>
+                        //     <p>Nachrichten werden geladen...</p>
                         // </div>
                         null
                     }
                     endMessage={
                         <div className="text-center text-muted-foreground text-xs py-2">
-                            No older messages.
+                            Keine älteren Nachrichten.
                         </div>
                     }
                 >
@@ -95,14 +95,14 @@ export default function TeamChatCard({
                 {!isLoading && messages.length === 0 && (
                         <div className="flex flex-col items-center justify-center flex-grow text-muted-foreground  min-h-[200px]">
                             <MessageCircle className="h-12 w-12 text-border mb-4" />
-                            <p className="font-medium">No messages yet.</p>
-                            <p className="text-xs">Be the first to send a message!</p>
+                            <p className="font-medium">Noch keine Nachrichten.</p>
+                            <p className="text-xs">Sei der Erste, der eine Nachricht sendet!</p>
                         </div>
                 )}
                 {isLoading && (
                         <div className="flex flex-col items-center justify-center flex-grow text-muted-foreground  min-h-[200px]">
                             <Loader2 className="h-10 w-10 animate-spin text-primary mb-4" />
-                            <p>Loading messages...</p>
+                            <p>Nachrichten werden geladen...</p>
                         </div>
                 )}
             </div>
@@ -110,7 +110,7 @@ export default function TeamChatCard({
                 <Input
                     value={newMessage}
                     onChange={(event) => setNewMessage(event.target.value)}
-                    placeholder="Type a message..."
+                    placeholder="Nachricht eingeben..."
                     className="flex-grow"
                 />
                 <Button onClick={(event: React.MouseEvent) => sendMessage(event)} >

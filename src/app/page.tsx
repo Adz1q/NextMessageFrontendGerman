@@ -5,8 +5,8 @@ import { Session } from "next-auth";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "NextMessage | Homepage",
-  description: "Best messaging and video call app in the world!",
+  title: "NextMessage | Startseite",
+  description: "Die beste Messaging- und Videoanruf-App der Welt!",
 };
 
 export default async function HomePage() {

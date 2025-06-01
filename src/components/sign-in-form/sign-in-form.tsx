@@ -14,11 +14,11 @@ import { signIn } from "next-auth/react";
 
 const formSchema = z.object({
     login: z.string()
-    .min(1, { message: "Email or username cannot be empty" })
-    .max(50, { message: "Email or username cannot be longer than 50 characters"}),
+    .min(1, { message: "E-Mail oder Benutzername darf nicht leer sein" })
+    .max(50, { message: "E-Mail oder Benutzername darf nicht länger als 50 Zeichen sein"}),
     password: z.string()
-    .min(1, { message: "Password cannot be empty" })
-    .max(32, { message: "Password cannot be longer than 32 characters"}),
+    .min(1, { message: "Passwort darf nicht leer sein" })
+    .max(32, { message: "Passwort darf nicht länger als 32 Zeichen sein"}),
 });
 
 export default function SignInForm() {
@@ -44,11 +44,11 @@ export default function SignInForm() {
             });
         
             if (response && response.error) {
-                throw new Error("Invalid login or password");
+                throw new Error("Ungültiger Login oder ungültiges Passwort");
             }
 
             if (!response || !response.ok) {
-                throw new Error("Something went wrong");
+                throw new Error("Etwas ist schiefgelaufen");
             }
 
             setError("");
@@ -65,8 +65,8 @@ export default function SignInForm() {
     return (
         <div className="flex gap-12 items-center flex-col min-h-screen p-24">
             <div className="flex flex-col justify-center items-center gap-4">
-                <div className={"text-4xl font-bold flex items-center justify-center"}>Welcome back</div>
-                <div className={"text-lg flex items-center justify-center text-muted-foreground"}>Enter your credentials to access your account</div>
+                <div className={"text-4xl font-bold flex items-center justify-center"}>Willkommen zurück</div>
+                <div className={"text-lg flex items-center justify-center text-muted-foreground"}>Gib deine Anmeldedaten ein, um auf dein Konto zuzugreifen</div>
             </div>
             <div className="flex flex-col gap-8 w-full max-w-md">
                 <Form {...form}> 
@@ -80,11 +80,11 @@ export default function SignInForm() {
                             render={({ field }) => {
                                 return <FormItem>
                                     <FormLabel className="text-md font-500 text-foreground">
-                                        Enter your email or username
+                                        Gib deine E-Mail-Adresse oder deinen Benutzernamen ein
                                     </FormLabel>
                                     <FormControl>
                                         <Input 
-                                            placeholder="Email or username"
+                                            placeholder="E-Mail oder Benutzername"
                                             {...field}
                                         />
                                     </FormControl>
@@ -98,13 +98,13 @@ export default function SignInForm() {
                             render={({ field }) => {
                                 return <FormItem>
                                     <FormLabel className="text-md font-500 text-foreground">
-                                        Enter your password
+                                        Gib dein Passwort ein
                                     </FormLabel>
                                     <FormControl>
                                         <div className="relative">
                                             <Input 
                                                 type={showPassword ? "text" : "password"}
-                                                placeholder="Password"
+                                                placeholder="Passwort"
                                                 {...field}
                                             />
                                             <button 
@@ -120,7 +120,7 @@ export default function SignInForm() {
                                 </FormItem>
                             }}
                         />
-                        <Button type="submit" className="w-full">Sign In</Button>
+                        <Button type="submit" className="w-full">Anmelden</Button>
                         {error && <div className="flex justify-center items-center">
                             <div className="text-red-900 font-medium">{error}</div>    
                         </div>}
@@ -128,7 +128,7 @@ export default function SignInForm() {
                 </Form>
                 <div className="flex justify-center items-center max-w-md w-full">
                     <Link href="/sign-up" className="hover:underline">
-                        Don&apos;t have an account? Sign Up
+                        Du hast noch kein Konto? Registrieren
                     </Link>
                 </div>
             </div>

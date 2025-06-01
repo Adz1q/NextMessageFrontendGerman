@@ -33,7 +33,7 @@ export default function PrivacySettingsCard({ userId, token, propsAllowMessagesF
         const result = await changeMessagePreferences(userId, allowMessagesFromNonFriends, token);
 
         if (!result.success) {
-            setError("Message preferences are already set to this value");
+            setError("Nachrichteneinstellungen sind bereits auf diesen Wert gesetzt");
             return;
         } 
 
@@ -46,10 +46,10 @@ export default function PrivacySettingsCard({ userId, token, propsAllowMessagesF
             <CardHeader className="flex flex-col gap-2">
                 <CardTitle className="flex items-center gap-2">
                 <ShieldCheck className="h-5 w-5" />
-                Privacy Settings
+                Datenschutzeinstellungen
                 </CardTitle>
                 <CardDescription>
-                    Control who can interact with you on the platform. This action will trigger a sign out.
+                    Kontrolliere, wer mit dir auf der Plattform interagieren kann. Diese Aktion löst eine Abmeldung aus.
                 </CardDescription>
             </CardHeader>
             <form onSubmit={handleSubmit}>
@@ -59,11 +59,11 @@ export default function PrivacySettingsCard({ userId, token, propsAllowMessagesF
                     <Label htmlFor="message-privacy" className="text-base">
                         <span className="flex items-center gap-2">
                         <MessageCircle className="h-4 w-4" />
-                        Direct Message Privacy
+                        Datenschutz für Direktnachrichten
                         </span>
                     </Label>
                     <p className="text-sm text-muted-foreground">
-                        Allow users who are not in your friends list to send you direct messages.
+                        Erlaube Benutzern, die nicht in deiner Freundesliste sind, dir Direktnachrichten zu senden.
                     </p>
                     </div>
                     <Switch
@@ -78,7 +78,7 @@ export default function PrivacySettingsCard({ userId, token, propsAllowMessagesF
                 <Button type="submit" disabled={!hasChanges} className="ml-auto">
                     <span className="flex items-center gap-2">
                         <Save className="h-4 w-4" />
-                        Save Changes
+                        Änderungen speichern
                     </span>
                 </Button>
                 </CardFooter>

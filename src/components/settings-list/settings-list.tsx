@@ -19,26 +19,26 @@ export default function SettingsList({ userId, token, allowMessagesFromNonFriend
     return (
         <div className="py-10 flex flex-col items-center">
             <h1 className="text-3xl font-bold mb-6 flex gap-2 items-center justify-center">
-                Account Settings 
+                Kontoeinstellungen 
                 <Settings />
             </h1>
             <Tabs value={activeTab} onValueChange={setActiveTab} className="flex flex-col items-center justify-center w-full max-w-md-lg">
                 <TabsList className="grid grid-cols-4 mb-8 bg-background">
                     <TabsTrigger value="profile" className="flex items-center gap-2">
                         <UserCircle className="h-4 w-4" />
-                        <span className="hidden sm:inline">Profile</span>
+                        <span className="hidden sm:inline">Profil</span>
                     </TabsTrigger>
                     <TabsTrigger value="security" className="flex items-center gap-2">
                         <KeyRound className="h-4 w-4" />
-                        <span className="hidden sm:inline">Security</span>
+                        <span className="hidden sm:inline">Sicherheit</span>
                     </TabsTrigger>
                     <TabsTrigger value="privacy" className="flex items-center gap-2">
                         <ShieldCheck className="h-4 w-4" />
-                        <span className="hidden sm:inline">Privacy</span>
+                        <span className="hidden sm:inline">Datenschutz</span>
                     </TabsTrigger>
                     <TabsTrigger value="delete" className="flex items-center gap-2">
                         <Trash2 className="h-4 w-4" />
-                        <span className="hidden sm:inline">Delete</span>
+                        <span className="hidden sm:inline">Löschen</span>
                     </TabsTrigger>
                 </TabsList>
                 <Card>

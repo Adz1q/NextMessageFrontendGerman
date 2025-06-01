@@ -31,7 +31,7 @@ export default function TeamChatSettingsCard({
     return (
         <div className="py-10 flex flex-col items-center">
             <h1 className="text-3xl font-bold mb-6 flex gap-2 items-center justify-center">
-                Team Chat Settings
+                Team-Chat-Einstellungen
                 <Settings />
             </h1>
             {error && <h3 className="text-red-900 pb-4 text-lg">{error}</h3>}
@@ -39,23 +39,23 @@ export default function TeamChatSettingsCard({
                 <TabsList className="flex mb-8 bg-background justify-center">
                     <TabsTrigger value="manageMembers" className="flex items-center gap-2">
                         <UserPen className="h-4 w-4" />
-                        <span className="hidden sm:inline">Chat Members</span>
+                        <span className="hidden sm:inline">Chat-Mitglieder</span>
                     </TabsTrigger>
                     <TabsTrigger value="addMembers" className="flex items-center gap-2">
                         <UserPlus className="h-4 w-4" />
-                        <span className="hidden sm:inline">Add Members</span>
+                        <span className="hidden sm:inline">Mitglieder hinzufügen</span>
                     </TabsTrigger>
                     <TabsTrigger value="leaveChat" className="flex items-center gap-2">
                         <DoorOpen className="h-4 w-4" />
-                        <span className="hidden sm:inline">Leave Chat</span>
+                        <span className="hidden sm:inline">Chat verlassen</span>
                     </TabsTrigger>
                     {chat?.adminId === userId && <TabsTrigger value="changeName" className="flex items-center gap-2">
                         <Edit className="h-4 w-4" />
-                        <span className="hidden sm:inline">Chat Name</span>
+                        <span className="hidden sm:inline">Chat-Name</span>
                     </TabsTrigger>}
                     {chat?.adminId === userId && <TabsTrigger value="deleteChat" className="flex items-center gap-2">
                         <Trash2 className="h-4 w-4" />
-                        <span className="hidden sm:inline">Delete Chat</span>
+                        <span className="hidden sm:inline">Chat löschen</span>
                     </TabsTrigger>}
                 </TabsList>
                 <Card>

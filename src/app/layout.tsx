@@ -4,7 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider/theme-provider";
 
 export const metadata: Metadata = {
     title: "NextMessage",
-    description: "Best messaging and video call app in the world!",
+    description: "Die beste Messaging- und Videoanruf-App der Welt!",
 };
 
 export default function RootLayout({

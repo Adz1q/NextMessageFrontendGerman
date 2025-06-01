@@ -60,7 +60,7 @@ export const useChatMember = (
         );
 
         if (!secondResult.success) {
-            setError(secondResult.error);
+            setError("Fehler beim Erstellen des privaten Chats.");
             return;
         }
 
@@ -78,7 +78,7 @@ export const useChatMember = (
         );
 
         if (!result.success) {
-            setError(result.error);
+            setError("Fehler beim Senden der Freundschaftsanfrage.");
             return;
         }
 
@@ -95,7 +95,7 @@ export const useChatMember = (
         );
 
         if (!result.success) {
-            setError(result.error);
+            setError("Fehler beim Entfernen des Team-Chat-Mitglieds.");
             return;
         }
 
@@ -111,7 +111,7 @@ export const useChatMember = (
         );
 
         if (!result.success) {
-            setError(result.error);
+            setError("Fehler beim Ändern des Team-Chat-Admins.");
             return; 
         }
 

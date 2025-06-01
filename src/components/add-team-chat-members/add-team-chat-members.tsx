@@ -32,18 +32,18 @@ export default function AddTeamChatMembers({ chatId, userId, token }: {
                 <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit mb-3">
                      <MessageSquarePlus className="h-8 w-8 text-primary" />
                 </div>
-                <CardTitle className="text-2xl font-bold tracking-tight">Add More Chat Members</CardTitle>
+                <CardTitle className="text-2xl font-bold tracking-tight">Weitere Chat-Mitglieder hinzufügen</CardTitle>
                 <CardDescription>
-                    Invite your friends who are not already in your team chat to start collaborating.
+                    Lade deine Freunde ein, die noch nicht in deinem Team-Chat sind, um mit der Zusammenarbeit zu beginnen.
                 </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
                 <form onSubmit={handleAddTeamChatMembers} className="flex flex-col gap-8">
                         <div className="space-y-3">
-                            <div className="text-sm font-medium">Select members to add</div>
+                            <div className="text-sm font-medium">Mitglieder zum Hinzufügen auswählen</div>
                             {notAddedFriends.length === 0 && (
                                 <p className="text-sm text-muted-foreground py-3 text-center">
-                                    You currently have no friends to add.
+                                    Du hast derzeit keine Freunde zum Hinzufügen.
                                 </p>
                             )}
                             {notAddedFriends.length > 0 && (
@@ -62,7 +62,7 @@ export default function AddTeamChatMembers({ chatId, userId, token }: {
                             )}
                             {selectedFriendIds.size > 0 && (
                                 <div className="text-xs text-muted-foreground pt-1">
-                                    Selected members: {selectedFriendIds.size}
+                                    Ausgewählte Mitglieder: {selectedFriendIds.size}
                                 </div>
                             )}
                         </div>
@@ -81,7 +81,7 @@ export default function AddTeamChatMembers({ chatId, userId, token }: {
                             ) : (
                                 <Users className="mr-2 h-5 w-5" />
                             )}
-                            Add members
+                            Mitglieder hinzufügen
                         </Button>
                 </form>
             </CardContent>

@@ -5,7 +5,7 @@ import { Session } from "next-auth";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-    title: "Settings | NextMessage",
+    title: "Einstellungen | NextMessage",
 };
 
 export default async function SettingsPage() {

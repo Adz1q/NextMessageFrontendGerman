@@ -8,18 +8,18 @@ export default async function NotFound() {
     if (session === null) {
         return (
             <div className="flex flex-col mt-64 gap-6 items-center justify-center">
-                <h2 className="text-4xl font-bold">Not found</h2>
-                <p className="text-xl">Sorry, the page you are looking for does not exist.</p>
-                <Link href="/" className="hover:underline text-xl">Return to homepage</Link>
+                <h2 className="text-4xl font-bold">Nicht gefunden</h2>
+                <p className="text-xl">Entschuldigung, die gesuchte Seite existiert nicht.</p>
+                <Link href="/" className="hover:underline text-xl">Zurück zur Startseite</Link>
             </div>
         );
     }
 
     return (
         <div className="flex flex-col mt-64 gap-6 items-center justify-center">
-            <h2 className="text-4xl font-bold">Not found</h2>
-            <p className="text-xl">Sorry, the page you are looking for does not exist.</p>
-            <Link href="/dashboard" className="hover:underline text-xl">Return to dashboard</Link>
+            <h2 className="text-4xl font-bold">Nicht gefunden</h2>
+            <p className="text-xl">Entschuldigung, die gesuchte Seite existiert nicht.</p>
+            <Link href="/dashboard" className="hover:underline text-xl">Zurück zum Dashboard</Link>
         </div>
     );
 }

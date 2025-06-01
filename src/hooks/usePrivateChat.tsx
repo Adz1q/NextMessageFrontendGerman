@@ -63,7 +63,7 @@ export const usePrivateChat = (chatId: number, token: string, userId: number, us
             const friendshipRequestsResult = await getFriendshipRequestsBySenderId(userId, token);
             
             if (!friendshipRequestsResult.success) {
-               setError(friendshipRequestsResult.error);
+               setError("Fehler beim Abrufen der Freundschaftsanfragen.");
                return;
             }
 
@@ -102,7 +102,7 @@ export const usePrivateChat = (chatId: number, token: string, userId: number, us
         );
 
         if (!result.success) {
-            setError(result.error);
+            setError("Fehler beim Senden der Freundschaftsanfrage.");
         }
 
         setError("");
@@ -113,7 +113,7 @@ export const usePrivateChat = (chatId: number, token: string, userId: number, us
         const result = await removeFriend(friendshipId, token);
 
         if (!result.success) {
-            setError(result.error);
+            setError("Fehler beim Entfernen des Freundes.");
         }
 
         setIsFriend(false);

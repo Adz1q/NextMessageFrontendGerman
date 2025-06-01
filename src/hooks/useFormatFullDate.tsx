@@ -10,7 +10,7 @@ export const useFormatFullDate = (providedDate: string) => {
         const formatDate = () => {
             const currentDate = new Date();
             const date = new Date(providedDate);
-            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            const monthNames = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
             
             
             const dateDay = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();

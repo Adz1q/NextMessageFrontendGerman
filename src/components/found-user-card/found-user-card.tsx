@@ -55,15 +55,15 @@ export default function FoundUserCard({ foundUser, friends, chats, friendshipReq
     return (
         <div className="flex items-center justify-between max-w-md">
             <div className="flex items-center font-500">
-                <Image src={foundUser.profilePictureUrl} width={50} height={50} alt="Profile picture"/>
+                <Image src={foundUser.profilePictureUrl} width={50} height={50} alt="Profilbild"/>
                 <div>{foundUser.username}</div>
             </div>
             <div className="flex items-center gap-2">
                 <Button onClick={handleStartNewConversation} variant="outline" className={foundUser.allowMessagesFromNonFriends || isFriend ? "visible" : "invisible"}>
-                    <MessageCircleMore /> Message
+                    <MessageCircleMore /> Nachricht
                 </Button>
                 <Button onClick={handleSendFriendshipRequest} variant="outline" className={isFriend || isFriendshipRequestSent ? "invisible" : "visible"}>
-                    <UserPlus /> Add Friend
+                    <UserPlus /> Freund hinzufügen
                 </Button>
                 {error && <div className="text-red-900">{error}</div>}
             </div>
